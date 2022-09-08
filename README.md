@@ -70,10 +70,6 @@ interface MT {
 }
 ```
 
-**`Typeparam`**
-
-T - A plain object type
-
 #### Type parameters
 
 | Name | Type             |
@@ -82,7 +78,7 @@ T - A plain object type
 
 #### Defined in
 
-[index.ts:32](https://github.com/daidodo/merge-options/blob/7afbe3f/src/index.ts#L32)
+[index.ts:29](https://github.com/daidodo/merge-options/blob/7050cad/src/index.ts#L29)
 
 ## Functions
 
@@ -131,7 +127,7 @@ const t = mergeOptions(merger, {vals: [1]}, {vals: [2, 3]}); // t = {vals: [1, 2
 
 #### Defined in
 
-[index.ts:123](https://github.com/daidodo/merge-options/blob/7afbe3f/src/index.ts#L123)
+[index.ts:118](https://github.com/daidodo/merge-options/blob/7050cad/src/index.ts#L118)
 
 ---
 
@@ -180,7 +176,7 @@ const t = mergeOptions(merger, {vals: 1}, {vals: [2, 3]}); // t = {vals: [1, 2, 
 
 #### Defined in
 
-[index.ts:143](https://github.com/daidodo/merge-options/blob/7afbe3f/src/index.ts#L143)
+[index.ts:138](https://github.com/daidodo/merge-options/blob/7050cad/src/index.ts#L138)
 
 ---
 
@@ -237,7 +233,7 @@ const t3 = mergeOptions(merger, {val: 1}, {val: 2}); // t3 = {val: 3}
 
 #### Defined in
 
-[index.ts:102](https://github.com/daidodo/merge-options/blob/7afbe3f/src/index.ts#L102)
+[index.ts:97](https://github.com/daidodo/merge-options/blob/7050cad/src/index.ts#L97)
 
 ---
 
@@ -266,10 +262,6 @@ const obj = mergeOptionsWithMerger(merger, {foo: 3, bar: ['abc']}, {foo: 4, bar:
 Each field in a merger defines how that field is merged between configs. If _undefined_, the
 field will use the default policy which is replacement by the latter.
 
-**`Typeparam`**
-
-T - A plain object type
-
 #### Type parameters
 
 | Name | Type             |
@@ -289,7 +281,7 @@ T - A plain object type
 
 #### Defined in
 
-[index.ts:63](https://github.com/daidodo/merge-options/blob/7afbe3f/src/index.ts#L63)
+[index.ts:58](https://github.com/daidodo/merge-options/blob/7050cad/src/index.ts#L58)
 
 # License
 
