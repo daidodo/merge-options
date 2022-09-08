@@ -25,9 +25,6 @@
  *   bar?: (a: string[] | undefined, b: string[] | undefined) => (string[] | undefined);
  * }
  * ```
- * 
- * @typeparam T - A plain object type
- * 
  */
 export type Merger<T extends object> = {
   [P in keyof T]?: (a: T[P], b: T[P]) => T[P];
@@ -54,8 +51,6 @@ export type Merger<T extends object> = {
  *
  * Each field in a merger defines how that field is merged between configs. If _undefined_, the
  * field will use the default policy which is replacement by the latter.
- *
- * @typeparam T - A plain object type
  *
  * @param merger - A custom object with merge functions for fields
  * @param options - An array of plain objects
