@@ -51,7 +51,7 @@ export type Merger<T extends object> = {
  * }
  *
  * const obj_2 = mergeOptions(merger, {foo: 3, bar: ['abc']}, {foo: 4, bar: ['def']});
- * // obj = {foo: 4, bar: ['abc', 'def']}
+ * // obj_2 = {foo: 4, bar: ['abc', 'def']}
  * ```
  *
  * Each field in a merger defines how that field is merged between configs. If _undefined_, the
