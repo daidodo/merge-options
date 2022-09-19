@@ -38,7 +38,7 @@ interface MT {
 
 #### Defined in
 
-[index.ts:31](https://github.com/daidodo/merge-options/blob/f245c13/src/index.ts#L31)
+[index.ts:31](https://github.com/daidodo/merge-options/blob/69c79a0/src/index.ts#L31)
 
 ## Functions
 
@@ -87,7 +87,7 @@ const t = mergeOptions(merger, {vals: [1]}, {vals: [2, 3]}); // t = {vals: [1, 2
 
 #### Defined in
 
-[index.ts:127](https://github.com/daidodo/merge-options/blob/f245c13/src/index.ts#L127)
+[index.ts:127](https://github.com/daidodo/merge-options/blob/69c79a0/src/index.ts#L127)
 
 ___
 
@@ -136,7 +136,7 @@ const t = mergeOptions(merger, {vals: 1}, {vals: [2, 3]}); // t = {vals: [1, 2, 
 
 #### Defined in
 
-[index.ts:147](https://github.com/daidodo/merge-options/blob/f245c13/src/index.ts#L147)
+[index.ts:147](https://github.com/daidodo/merge-options/blob/69c79a0/src/index.ts#L147)
 
 ___
 
@@ -193,7 +193,7 @@ const t3 = mergeOptions(merger, {val: 1}, {val: 2}); // t3 = {val: 3}
 
 #### Defined in
 
-[index.ts:106](https://github.com/daidodo/merge-options/blob/f245c13/src/index.ts#L106)
+[index.ts:106](https://github.com/daidodo/merge-options/blob/69c79a0/src/index.ts#L106)
 
 ___
 
@@ -219,7 +219,7 @@ const merger: Merger<T> = {
 }
 
 const obj_2 = mergeOptions(merger, {foo: 3, bar: ['abc']}, {foo: 4, bar: ['def']});
-// obj = {foo: 4, bar: ['abc', 'def']}
+// obj_2 = {foo: 4, bar: ['abc', 'def']}
 ```
 
 Each field in a merger defines how that field is merged between configs. If _undefined_, the
@@ -236,7 +236,7 @@ field will use the default policy which is replacement by the latter.
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `merger` | `undefined` \| [`Merger`](README.md#merger)<`T`\> | A custom object with merge functions for fields. Or _undefined_ if using all default. |
-| `...options` | (`undefined` \| `T`)[] | An array of plain objects. Any _null_ or _undefined_ elements will be omitted. |
+| `...options` | (`undefined` \| ``null`` \| `T`)[] | An array of plain objects. Any _null_ or _undefined_ elements will be omitted. |
 
 #### Returns
 
@@ -244,4 +244,4 @@ field will use the default policy which is replacement by the latter.
 
 #### Defined in
 
-[index.ts:63](https://github.com/daidodo/merge-options/blob/f245c13/src/index.ts#L63)
+[index.ts:63](https://github.com/daidodo/merge-options/blob/69c79a0/src/index.ts#L63)
