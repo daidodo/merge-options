@@ -1,5 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-types */
 
+import { isNonNull } from '@dozerg/condition';
+
 /**
  * Merger is a type whose fields are the same as `T`, while the types are functions.
  * Each function defines how that field is merged between objects of `T`.
@@ -56,12 +58,15 @@ export type Merger<T extends object> = {
  * field will use the default policy which is replacement by the latter.
  *
  * @param merger - A custom object with merge functions for fields. Or _undefined_ if using all default.
- * @param options - An array of plain objects
+ * @param options - An array of plain objects. Any _null_ or _undefined_ elements will be omitted.
  */
-export function mergeOptions<T extends object>(merger: Merger<T> | undefined, ...options: T[]) {
+export function mergeOptions<T extends object>(
+  merger: Merger<T> | undefined,
+  ...options: (T | undefined)[]
+) {
   if (options.length < 2) return options?.[0] ?? {};
   const mm = merger ?? ({} as Merger<T>);
-  return options.reduce((a, b) => {
+  return options.filter(isNonNull).reduce((a, b) => {
     const c = (Object.keys(mm) as (keyof T)[])
       .map(k => {
         const m = mm[k];
