@@ -34,11 +34,11 @@ const merger: Merger<Configuration> = {
   ignoreESLintRules: concatArrayEx(),
 };
 
-function mergeConfig<T extends object>(...options: T[]) {
+function mergeConfig<T extends object>(...options: (T | undefined | null)[]) {
   return mergeOptions(merger, ...options);
 }
 
-function mergeConfig2<T extends object>(...options: T[]) {
+function mergeConfig2<T extends object>(...options: (T | undefined | null)[]) {
   return mergeOptions(undefined, ...options);
 }
 
@@ -50,7 +50,11 @@ describe('mergeOptions', () => {
   test('1 config', () => {
     const C: Configuration = { trailingComma: 'none', exclude: ['abc'] };
     expect(mergeConfig(C)).toEqual(C);
+    expect(mergeConfig(undefined)).toEqual({});
+    expect(mergeConfig(null)).toEqual({});
     expect(mergeConfig2(C)).toEqual(C);
+    expect(mergeConfig2(undefined)).toEqual({});
+    expect(mergeConfig2(null)).toEqual({});
   });
   describe('2 configs', () => {
     describe('Common fields', () => {
@@ -66,6 +70,10 @@ describe('mergeOptions', () => {
         const C: Configuration = { trailingComma: 'none' };
         expect(mergeConfig({}, C)).toEqual(C);
         expect(mergeConfig(C, {})).toEqual(C);
+        expect(mergeConfig(undefined, C)).toEqual(C);
+        expect(mergeConfig(C, undefined)).toEqual(C);
+        expect(mergeConfig(null, C)).toEqual(C);
+        expect(mergeConfig(C, null)).toEqual(C);
       });
       test('undefined + undefined', () => {
         const C: Configuration = { trailingComma: undefined };

@@ -62,7 +62,7 @@ export type Merger<T extends object> = {
  */
 export function mergeOptions<T extends object>(
   merger: Merger<T> | undefined,
-  ...options: (T | undefined)[]
+  ...options: (T | undefined | null)[]
 ) {
   if (options.length < 2) return options?.[0] ?? {};
   const mm = merger ?? ({} as Merger<T>);
