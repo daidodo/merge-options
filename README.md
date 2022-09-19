@@ -38,7 +38,7 @@ const obj = mergeOptionsWithMerger(merger, {foo: 3, bar: ['abc']}, {foo: 4, bar:
 // obj = {foo: 4, bar: ['abc', 'def']}
 ```
 
-# APIs
+# APIs Documentation
 
 ## Type Aliases
 
@@ -78,7 +78,7 @@ interface MT {
 
 #### Defined in
 
-[index.ts:29](https://github.com/daidodo/merge-options/blob/7050cad/src/index.ts#L29)
+[index.ts:29](https://github.com/daidodo/merge-options/blob/3a9f96f/src/index.ts#L29)
 
 ## Functions
 
@@ -127,7 +127,7 @@ const t = mergeOptions(merger, {vals: [1]}, {vals: [2, 3]}); // t = {vals: [1, 2
 
 #### Defined in
 
-[index.ts:118](https://github.com/daidodo/merge-options/blob/7050cad/src/index.ts#L118)
+[index.ts:122](https://github.com/daidodo/merge-options/blob/3a9f96f/src/index.ts#L122)
 
 ---
 
@@ -176,7 +176,7 @@ const t = mergeOptions(merger, {vals: 1}, {vals: [2, 3]}); // t = {vals: [1, 2, 
 
 #### Defined in
 
-[index.ts:138](https://github.com/daidodo/merge-options/blob/7050cad/src/index.ts#L138)
+[index.ts:142](https://github.com/daidodo/merge-options/blob/3a9f96f/src/index.ts#L142)
 
 ---
 
@@ -233,7 +233,7 @@ const t3 = mergeOptions(merger, {val: 1}, {val: 2}); // t3 = {val: 3}
 
 #### Defined in
 
-[index.ts:97](https://github.com/daidodo/merge-options/blob/7050cad/src/index.ts#L97)
+[index.ts:101](https://github.com/daidodo/merge-options/blob/3a9f96f/src/index.ts#L101)
 
 ---
 
@@ -251,11 +251,14 @@ interface T {
   bar?: string[];
 }
 
+const obj_1 = mergeOptions(undefined, {foo: 3, bar: ['abc']}, {foo: 4, bar: ['def']});
+// obj_1 = {foo: 4, bar: ['def']}
+
 const merger: Merger<T> = {
   bar: (a, b) => [...a, ...b];
 }
 
-const obj = mergeOptionsWithMerger(merger, {foo: 3, bar: ['abc']}, {foo: 4, bar: ['def']});
+const obj_2 = mergeOptions(merger, {foo: 3, bar: ['abc']}, {foo: 4, bar: ['def']});
 // obj = {foo: 4, bar: ['abc', 'def']}
 ```
 
@@ -270,10 +273,10 @@ field will use the default policy which is replacement by the latter.
 
 #### Parameters
 
-| Name         | Type                               | Description                                     |
-| :----------- | :--------------------------------- | :---------------------------------------------- |
-| `merger`     | [`Merger`](README.md#merger)<`T`\> | A custom object with merge functions for fields |
-| `...options` | `T`[]                              | An array of plain objects                       |
+| Name         | Type                                              | Description                                                                           |
+| :----------- | :------------------------------------------------ | :------------------------------------------------------------------------------------ |
+| `merger`     | `undefined` \| [`Merger`](README.md#merger)<`T`\> | A custom object with merge functions for fields. Or _undefined_ if using all default. |
+| `...options` | `T`[]                                             | An array of plain objects                                                             |
 
 #### Returns
 
@@ -281,7 +284,7 @@ field will use the default policy which is replacement by the latter.
 
 #### Defined in
 
-[index.ts:58](https://github.com/daidodo/merge-options/blob/7050cad/src/index.ts#L58)
+[index.ts:61](https://github.com/daidodo/merge-options/blob/3a9f96f/src/index.ts#L61)
 
 # License
 
