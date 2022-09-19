@@ -38,13 +38,19 @@ function mergeConfig<T extends object>(...options: T[]) {
   return mergeOptions(merger, ...options);
 }
 
+function mergeConfig2<T extends object>(...options: T[]) {
+  return mergeOptions(undefined, ...options);
+}
+
 describe('mergeOptions', () => {
   test('No config', () => {
     expect(mergeConfig()).toEqual({});
+    expect(mergeConfig2()).toEqual({});
   });
   test('1 config', () => {
     const C: Configuration = { trailingComma: 'none', exclude: ['abc'] };
     expect(mergeConfig(C)).toEqual(C);
+    expect(mergeConfig2(C)).toEqual(C);
   });
   describe('2 configs', () => {
     describe('Common fields', () => {
@@ -97,6 +103,7 @@ describe('mergeOptions', () => {
         sortImportsBy: 'names',
       };
       expect(mergeConfig(C1, C2)).toEqual(C);
+      expect(mergeConfig2(C1, C2)).toEqual({ ...C, excludeGlob: ['b'] });
     });
     test('keepUnused', () => {
       const C1: Configuration = {

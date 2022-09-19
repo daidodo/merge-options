@@ -41,29 +41,33 @@ export type Merger<T extends object> = {
  *   bar?: string[];
  * }
  *
+ * const obj_1 = mergeOptions(undefined, {foo: 3, bar: ['abc']}, {foo: 4, bar: ['def']});
+ * // obj_1 = {foo: 4, bar: ['def']}
+ *
  * const merger: Merger<T> = {
  *   bar: (a, b) => [...a, ...b];
  * }
  *
- * const obj = mergeOptionsWithMerger(merger, {foo: 3, bar: ['abc']}, {foo: 4, bar: ['def']});
+ * const obj_2 = mergeOptions(merger, {foo: 3, bar: ['abc']}, {foo: 4, bar: ['def']});
  * // obj = {foo: 4, bar: ['abc', 'def']}
  * ```
  *
  * Each field in a merger defines how that field is merged between configs. If _undefined_, the
  * field will use the default policy which is replacement by the latter.
  *
- * @param merger - A custom object with merge functions for fields
+ * @param merger - A custom object with merge functions for fields. Or _undefined_ if using all default.
  * @param options - An array of plain objects
  */
-export function mergeOptions<T extends object>(merger: Merger<T>, ...options: T[]) {
+export function mergeOptions<T extends object>(merger: Merger<T> | undefined, ...options: T[]) {
   if (options.length < 2) return options?.[0] ?? {};
+  const mm = merger ?? ({} as Merger<T>);
   return options.reduce((a, b) => {
-    const c = (Object.keys(merger) as (keyof T)[])
+    const c = (Object.keys(mm) as (keyof T)[])
       .map(k => {
-        const m = merger[k];
+        const m = mm[k];
         return { [k]: m ? m(a[k], b[k]) : b[k] ?? a[k] };
       })
-      .reduce((a, b) => ({ ...a, ...b })) as T;
+      .reduce((a, b) => ({ ...a, ...b }), {}) as T;
     return { ...purify(a), ...purify(b), ...purify(c) };
   });
 }
