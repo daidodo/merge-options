@@ -64,7 +64,7 @@ export function mergeOptions<T extends object>(
   merger: Merger<T> | undefined,
   ...options: (T | undefined | null)[]
 ) {
-  if (options.length < 2) return options?.[0] ?? {};
+  if (options.length < 2) return options?.[0] ?? ({} as T);
   const mm = merger ?? ({} as Merger<T>);
   return options.filter(isNonNull).reduce((a, b) => {
     const c = (Object.keys(mm) as (keyof T)[])

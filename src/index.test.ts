@@ -49,6 +49,8 @@ describe('mergeOptions', () => {
   });
   test('1 config', () => {
     const C: Configuration = { trailingComma: 'none', exclude: ['abc'] };
+    const r = mergeConfig(C);
+    expect(r.exclude).toBeDefined();
     expect(mergeConfig(C)).toEqual(C);
     expect(mergeConfig(undefined)).toEqual({});
     expect(mergeConfig(null)).toEqual({});
