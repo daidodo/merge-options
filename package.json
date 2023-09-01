@@ -28,7 +28,7 @@
     "test:watch": "jest --watch src/",
     "clean": "rm -rf dist",
     "cleanall": "rm -rf dist node_modules *.tgz docs",
-    "docs": "rm -rf docs && typedoc",
+    "docs": "rm -rf docs && typedoc --plugin typedoc-plugin-markdown",
     "prepublishOnly": "npm run clean && npm i && tsc && eslint src/ && jest src/"
   },
   "author": "Zhao DAI <daidodo@gmail.com>",

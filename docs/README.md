@@ -38,7 +38,7 @@ interface MT {
 
 #### Defined in
 
-[index.ts:31](https://github.com/daidodo/merge-options/blob/69c79a0/src/index.ts#L31)
+[index.ts:31](https://github.com/daidodo/merge-options/blob/09faf74/src/index.ts#L31)
 
 ## Functions
 
@@ -47,20 +47,6 @@ interface MT {
 ▸ **concatArray**<`T`\>(): (`a`: `undefined` \| `T`[], `b`: `undefined` \| `T`[]) => `undefined` \| `T`[]
 
 Pre-defined merge function for concatenating arrays.
-
-**`Example`**
-
-```ts
-interface T {
-  vals?: number[];
-}
-
-const merger: Merger<T> = {
-  vals: concatArray();
-}
-
-const t = mergeOptions(merger, {vals: [1]}, {vals: [2, 3]}); // t = {vals: [1, 2, 3]}
-```
 
 #### Type parameters
 
@@ -85,9 +71,23 @@ const t = mergeOptions(merger, {vals: [1]}, {vals: [2, 3]}); // t = {vals: [1, 2
 
 `undefined` \| `T`[]
 
+**`Example`**
+
+```ts
+interface T {
+  vals?: number[];
+}
+
+const merger: Merger<T> = {
+  vals: concatArray();
+}
+
+const t = mergeOptions(merger, {vals: [1]}, {vals: [2, 3]}); // t = {vals: [1, 2, 3]}
+```
+
 #### Defined in
 
-[index.ts:127](https://github.com/daidodo/merge-options/blob/69c79a0/src/index.ts#L127)
+[index.ts:127](https://github.com/daidodo/merge-options/blob/09faf74/src/index.ts#L127)
 
 ___
 
@@ -96,20 +96,6 @@ ___
 ▸ **concatArrayEx**<`T`\>(): (`a`: `undefined` \| `T` \| `T`[], `b`: `undefined` \| `T` \| `T`[]) => `undefined` \| `T` \| `T`[]
 
 Same as [concatArray](#concatArray) but also handle `T | T[]` fields.
-
-**`Example`**
-
-```ts
-interface T {
-  vals?: number | number[];
-}
-
-const merger: Merger<T> = {
-  vals: concatArrayEx();
-}
-
-const t = mergeOptions(merger, {vals: 1}, {vals: [2, 3]}); // t = {vals: [1, 2, 3]}
-```
 
 #### Type parameters
 
@@ -134,9 +120,23 @@ const t = mergeOptions(merger, {vals: 1}, {vals: [2, 3]}); // t = {vals: [1, 2, 
 
 `undefined` \| `T` \| `T`[]
 
+**`Example`**
+
+```ts
+interface T {
+  vals?: number | number[];
+}
+
+const merger: Merger<T> = {
+  vals: concatArrayEx();
+}
+
+const t = mergeOptions(merger, {vals: 1}, {vals: [2, 3]}); // t = {vals: [1, 2, 3]}
+```
+
 #### Defined in
 
-[index.ts:147](https://github.com/daidodo/merge-options/blob/69c79a0/src/index.ts#L147)
+[index.ts:147](https://github.com/daidodo/merge-options/blob/09faf74/src/index.ts#L147)
 
 ___
 
@@ -145,22 +145,6 @@ ___
 ▸ **customize**<`T`\>(`m`): (`a`: `undefined` \| `T`, `b`: `undefined` \| `T`) => `undefined` \| `T`
 
 Helper function to define merge functions. It deals with _undefined_ values.
-
-**`Example`**
-
-```ts
-interface T {
-  val?: number;  // val is optional
-}
-
-const merger: Merger<T> = {
-  val: customize((a, b) => a + b); // You don't need to handle undefined a or b
-}
-
-const t1 = mergeOptions(merger, {val: 1}, {}); // t1 = {val: 1}
-const t2 = mergeOptions(merger, {}, {val: 2}); // t2 = {val: 2}
-const t3 = mergeOptions(merger, {val: 1}, {val: 2}); // t3 = {val: 3}
-```
 
 #### Type parameters
 
@@ -191,17 +175,50 @@ const t3 = mergeOptions(merger, {val: 1}, {val: 2}); // t3 = {val: 3}
 
 `undefined` \| `T`
 
+**`Example`**
+
+```ts
+interface T {
+  val?: number;  // val is optional
+}
+
+const merger: Merger<T> = {
+  val: customize((a, b) => a + b); // You don't need to handle undefined a or b
+}
+
+const t1 = mergeOptions(merger, {val: 1}, {}); // t1 = {val: 1}
+const t2 = mergeOptions(merger, {}, {val: 2}); // t2 = {val: 2}
+const t3 = mergeOptions(merger, {val: 1}, {val: 2}); // t3 = {val: 3}
+```
+
 #### Defined in
 
-[index.ts:106](https://github.com/daidodo/merge-options/blob/69c79a0/src/index.ts#L106)
+[index.ts:106](https://github.com/daidodo/merge-options/blob/09faf74/src/index.ts#L106)
 
 ___
 
 ### mergeOptions
 
-▸ **mergeOptions**<`T`\>(`merger`, ...`options`): `Object`
+▸ **mergeOptions**<`T`\>(`merger`, `...options`): `T`
 
 Merge multiple plain object with custom rules ([Merger](#Merger)).
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `T` | extends `object` |
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `merger` | `undefined` \| [`Merger`](README.md#merger)<`T`\> | A custom object with merge functions for fields. Or _undefined_ if using all default. |
+| `...options` | (`undefined` \| ``null`` \| `T`)[] | An array of plain objects. Any _null_ or _undefined_ elements will be omitted. |
+
+#### Returns
+
+`T`
 
 **`Example`**
 
@@ -225,23 +242,6 @@ const obj_2 = mergeOptions(merger, {foo: 3, bar: ['abc']}, {foo: 4, bar: ['def']
 Each field in a merger defines how that field is merged between configs. If _undefined_, the
 field will use the default policy which is replacement by the latter.
 
-#### Type parameters
-
-| Name | Type |
-| :------ | :------ |
-| `T` | extends `object` |
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `merger` | `undefined` \| [`Merger`](README.md#merger)<`T`\> | A custom object with merge functions for fields. Or _undefined_ if using all default. |
-| `...options` | (`undefined` \| ``null`` \| `T`)[] | An array of plain objects. Any _null_ or _undefined_ elements will be omitted. |
-
-#### Returns
-
-`Object`
-
 #### Defined in
 
-[index.ts:63](https://github.com/daidodo/merge-options/blob/69c79a0/src/index.ts#L63)
+[index.ts:63](https://github.com/daidodo/merge-options/blob/09faf74/src/index.ts#L63)
