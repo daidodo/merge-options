@@ -4,7 +4,7 @@
 
 ### Merger
 
-Ƭ **Merger**<`T`\>: { [P in keyof T]?: Function }
+Ƭ **Merger**\<`T`\>: \{ [P in keyof T]?: Function }
 
 Merger is a type whose fields are the same as `T`, while the types are functions.
 Each function defines how that field is merged between objects of `T`.
@@ -38,13 +38,13 @@ interface MT {
 
 #### Defined in
 
-[index.ts:31](https://github.com/daidodo/merge-options/blob/09faf74/src/index.ts#L31)
+[index.ts:31](https://github.com/daidodo/merge-options/blob/0b1fb19/src/index.ts#L31)
 
 ## Functions
 
 ### concatArray
 
-▸ **concatArray**<`T`\>(): (`a`: `undefined` \| `T`[], `b`: `undefined` \| `T`[]) => `undefined` \| `T`[]
+▸ **concatArray**\<`T`\>(): (`a`: `undefined` \| `T`[], `b`: `undefined` \| `T`[]) => `undefined` \| `T`[]
 
 Pre-defined merge function for concatenating arrays.
 
@@ -87,13 +87,13 @@ const t = mergeOptions(merger, {vals: [1]}, {vals: [2, 3]}); // t = {vals: [1, 2
 
 #### Defined in
 
-[index.ts:127](https://github.com/daidodo/merge-options/blob/09faf74/src/index.ts#L127)
+[index.ts:127](https://github.com/daidodo/merge-options/blob/0b1fb19/src/index.ts#L127)
 
 ___
 
 ### concatArrayEx
 
-▸ **concatArrayEx**<`T`\>(): (`a`: `undefined` \| `T` \| `T`[], `b`: `undefined` \| `T` \| `T`[]) => `undefined` \| `T` \| `T`[]
+▸ **concatArrayEx**\<`T`\>(): (`a`: `undefined` \| `T` \| `T`[], `b`: `undefined` \| `T` \| `T`[]) => `undefined` \| `T` \| `T`[]
 
 Same as [concatArray](#concatArray) but also handle `T | T[]` fields.
 
@@ -136,13 +136,13 @@ const t = mergeOptions(merger, {vals: 1}, {vals: [2, 3]}); // t = {vals: [1, 2, 
 
 #### Defined in
 
-[index.ts:147](https://github.com/daidodo/merge-options/blob/09faf74/src/index.ts#L147)
+[index.ts:147](https://github.com/daidodo/merge-options/blob/0b1fb19/src/index.ts#L147)
 
 ___
 
 ### customize
 
-▸ **customize**<`T`\>(`m`): (`a`: `undefined` \| `T`, `b`: `undefined` \| `T`) => `undefined` \| `T`
+▸ **customize**\<`T`\>(`m`): (`a`: `undefined` \| `T`, `b`: `undefined` \| `T`) => `undefined` \| `T`
 
 Helper function to define merge functions. It deals with _undefined_ values.
 
@@ -193,13 +193,13 @@ const t3 = mergeOptions(merger, {val: 1}, {val: 2}); // t3 = {val: 3}
 
 #### Defined in
 
-[index.ts:106](https://github.com/daidodo/merge-options/blob/09faf74/src/index.ts#L106)
+[index.ts:106](https://github.com/daidodo/merge-options/blob/0b1fb19/src/index.ts#L106)
 
 ___
 
 ### mergeOptions
 
-▸ **mergeOptions**<`T`\>(`merger`, `...options`): `T`
+▸ **mergeOptions**\<`T`\>(`merger`, `...options`): `T`
 
 Merge multiple plain object with custom rules ([Merger](#Merger)).
 
@@ -213,7 +213,7 @@ Merge multiple plain object with custom rules ([Merger](#Merger)).
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `merger` | `undefined` \| [`Merger`](README.md#merger)<`T`\> | A custom object with merge functions for fields. Or _undefined_ if using all default. |
+| `merger` | `undefined` \| [`Merger`](README.md#merger)\<`T`\> | A custom object with merge functions for fields. Or _undefined_ if using all default. |
 | `...options` | (`undefined` \| ``null`` \| `T`)[] | An array of plain objects. Any _null_ or _undefined_ elements will be omitted. |
 
 #### Returns
@@ -244,4 +244,4 @@ field will use the default policy which is replacement by the latter.
 
 #### Defined in
 
-[index.ts:63](https://github.com/daidodo/merge-options/blob/09faf74/src/index.ts#L63)
+[index.ts:63](https://github.com/daidodo/merge-options/blob/0b1fb19/src/index.ts#L63)
