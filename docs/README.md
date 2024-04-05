@@ -38,7 +38,7 @@ interface MT {
 
 #### Defined in
 
-[index.ts:31](https://github.com/daidodo/merge-options/blob/2fe72b9/src/index.ts#L31)
+[index.ts:31](https://github.com/daidodo/merge-options/blob/0d34c0f/src/index.ts#L31)
 
 ## Functions
 
@@ -87,7 +87,7 @@ const t = mergeOptions(merger, {vals: [1]}, {vals: [2, 3]}); // t = {vals: [1, 2
 
 #### Defined in
 
-[index.ts:127](https://github.com/daidodo/merge-options/blob/2fe72b9/src/index.ts#L127)
+[index.ts:127](https://github.com/daidodo/merge-options/blob/0d34c0f/src/index.ts#L127)
 
 ___
 
@@ -136,7 +136,7 @@ const t = mergeOptions(merger, {vals: 1}, {vals: [2, 3]}); // t = {vals: [1, 2, 
 
 #### Defined in
 
-[index.ts:147](https://github.com/daidodo/merge-options/blob/2fe72b9/src/index.ts#L147)
+[index.ts:147](https://github.com/daidodo/merge-options/blob/0d34c0f/src/index.ts#L147)
 
 ___
 
@@ -193,7 +193,7 @@ const t3 = mergeOptions(merger, {val: 1}, {val: 2}); // t3 = {val: 3}
 
 #### Defined in
 
-[index.ts:106](https://github.com/daidodo/merge-options/blob/2fe72b9/src/index.ts#L106)
+[index.ts:106](https://github.com/daidodo/merge-options/blob/0d34c0f/src/index.ts#L106)
 
 ___
 
@@ -244,4 +244,4 @@ field will use the default policy which is replacement by the latter.
 
 #### Defined in
 
-[index.ts:63](https://github.com/daidodo/merge-options/blob/2fe72b9/src/index.ts#L63)
+[index.ts:63](https://github.com/daidodo/merge-options/blob/0d34c0f/src/index.ts#L63)
