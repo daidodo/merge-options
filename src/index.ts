@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/ban-types */
-
 import { isNonNull } from '@dozerg/condition';
 
 /**
@@ -70,7 +68,7 @@ export function mergeOptions<T extends object>(
     const c = (Object.keys(mm) as (keyof T)[])
       .map(k => {
         const m = mm[k];
-        return { [k]: m ? m(a[k], b[k]) : b[k] ?? a[k] };
+        return { [k]: m ? m(a[k], b[k]) : (b[k] ?? a[k]) };
       })
       .reduce((a, b) => ({ ...a, ...b }), {}) as T;
     return { ...purify(a), ...purify(b), ...purify(c) };
