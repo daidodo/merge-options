@@ -6,11 +6,15 @@
 
 > **customize**\<`T`\>(`m`): (`a`, `b`) => `undefined` \| `T`
 
+Defined in: [index.ts:104](https://github.com/daidodo/merge-options/blob/66948b7775e5a512b4c74579757f94a75241911f/src/index.ts#L104)
+
 Helper function to define merge functions. It deals with _undefined_ values.
 
 ## Type Parameters
 
-• **T**
+### T
+
+`T`
 
 ## Parameters
 
@@ -20,7 +24,7 @@ Helper function to define merge functions. It deals with _undefined_ values.
 
 ## Returns
 
-`Function`
+> (`a`, `b`): `undefined` \| `T`
 
 ### Parameters
 
@@ -51,7 +55,3 @@ const t1 = mergeOptions(merger, {val: 1}, {}); // t1 = {val: 1}
 const t2 = mergeOptions(merger, {}, {val: 2}); // t2 = {val: 2}
 const t3 = mergeOptions(merger, {val: 1}, {val: 2}); // t3 = {val: 3}
 ```
-
-## Defined in
-
-[index.ts:106](https://github.com/daidodo/merge-options/blob/2014e172b83fb5388479cb5a3ce60de761994d65/src/index.ts#L106)

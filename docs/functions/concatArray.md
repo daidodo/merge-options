@@ -6,15 +6,19 @@
 
 > **concatArray**\<`T`\>(): (`a`, `b`) => `undefined` \| `T`[]
 
+Defined in: [index.ts:125](https://github.com/daidodo/merge-options/blob/66948b7775e5a512b4c74579757f94a75241911f/src/index.ts#L125)
+
 Pre-defined merge function for concatenating arrays.
 
 ## Type Parameters
 
-• **T**
+### T
+
+`T`
 
 ## Returns
 
-`Function`
+> (`a`, `b`): `undefined` \| `T`[]
 
 ### Parameters
 
@@ -43,7 +47,3 @@ const merger: Merger<T> = {
 
 const t = mergeOptions(merger, {vals: [1]}, {vals: [2, 3]}); // t = {vals: [1, 2, 3]}
 ```
-
-## Defined in
-
-[index.ts:127](https://github.com/daidodo/merge-options/blob/2014e172b83fb5388479cb5a3ce60de761994d65/src/index.ts#L127)

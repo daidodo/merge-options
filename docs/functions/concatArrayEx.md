@@ -6,15 +6,19 @@
 
 > **concatArrayEx**\<`T`\>(): (`a`, `b`) => `undefined` \| `T` \| `T`[]
 
+Defined in: [index.ts:145](https://github.com/daidodo/merge-options/blob/66948b7775e5a512b4c74579757f94a75241911f/src/index.ts#L145)
+
 Same as [concatArray](#concatArray) but also handle `T | T[]` fields.
 
 ## Type Parameters
 
-• **T**
+### T
+
+`T`
 
 ## Returns
 
-`Function`
+> (`a`, `b`): `undefined` \| `T` \| `T`[]
 
 ### Parameters
 
@@ -43,7 +47,3 @@ const merger: Merger<T> = {
 
 const t = mergeOptions(merger, {vals: 1}, {vals: [2, 3]}); // t = {vals: [1, 2, 3]}
 ```
-
-## Defined in
-
-[index.ts:147](https://github.com/daidodo/merge-options/blob/2014e172b83fb5388479cb5a3ce60de761994d65/src/index.ts#L147)
